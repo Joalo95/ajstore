@@ -1,2 +1,2 @@
-# Commercency
-Autor: Goncy Pozzo. Con fines educativos hago integracion con mercado pago.
+# AJ STORE
+Desarrollador: joalodev. Con fines educativos hago integracion con mercado pago.
