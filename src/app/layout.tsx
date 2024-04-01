@@ -5,10 +5,10 @@ import CartProvider from "~/cart/context";
 import ThemeProvider from "~/theme/context";
 import ThemeToggle from "~/theme/components/ThemeToggle";
 
+import Hero from "@/components/ui/hero";
+
 import FacebookIcon from "@/components/icons/facebook";
 import WhatsappIcon from "@/components/icons/whatsapp";
-
-import NotificationsPage from "./notifications/page";
 
 import "./globals.css";
 
@@ -32,13 +32,9 @@ async function RootLayout({ children }: { children: React.ReactNode }) {
         <ThemeProvider>
           <div className="relative m-auto max-w-screen-xl rounded-sm">
             <header className="flex flex-col gap-4 p-4">
-              <img
-                alt={store.title}
-                className="h-32 rounded-lg object-fit sm:h-64"
-                src="./assets/banner.jpg"
-              />
+              <Hero />
               <div className="flex flex-col items-center gap-2 sm:flex-row sm:items-start sm:gap-4">
-                <div className="-mt-20 rounded-full p-1 sm:-mt-12">
+                <div className="mt-4 rounded-full p-1 sm:mt-1">
                   <img
                     alt={store.title}
                     className="h-32 w-32 min-w-[128px] object-cover rounded-full border-8 border-background"
@@ -83,7 +79,6 @@ async function RootLayout({ children }: { children: React.ReactNode }) {
             <main className="px-4">
               <CartProvider>{children}</CartProvider>
             </main>
-            <NotificationsPage />
           </div>
         </ThemeProvider>
       </body>
