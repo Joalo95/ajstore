@@ -4,6 +4,10 @@ import MercadPagoIcon from "@/components/icons/mercadoPago";
 import {Button} from "@/components/ui/button";
 import {useCart} from "@/modules/cart/context/client";
 
+interface ServerResponse {
+  url: string;
+}
+
 export default function PaymentPage() {
   const [{cart}] = useCart();
 
@@ -18,7 +22,8 @@ export default function PaymentPage() {
         },
         body: JSON.stringify({items}),
       });
-      const url: URL = await res.json();
+      const data: ServerResponse = await res.json();
+      const url = new URL(data.url);
 
       window.open(url, "_blank");
     } catch (e) {
