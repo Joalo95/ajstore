@@ -38,6 +38,6 @@ export async function POST(req: NextRequest) {
 
         return NextResponse.json({ url: preference.sandbox_init_point });
     } catch (e) {
-        return NextResponse.error({ status: 500, statusText: e.message });
+        return NextResponse.error();
     }
 }
