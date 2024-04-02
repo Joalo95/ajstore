@@ -1,13 +1,16 @@
 "use client";
 
-import type { Store } from "~/store/types";
-import { getCartMessage, getCartTotal } from "../utils";
-import { parseCurrency } from "~/currency/utils";
-import type { Cart, CartItem, Checkout, Field } from "../types";
+import type {Store} from "~/store/types";
 
-import { useState, useMemo, useCallback, useContext, createContext } from "react";
-import { Button } from "@/components/ui/button";
+import type {Cart, CartItem, Checkout, Field} from "../types";
 
+import {useState, useMemo, useCallback, useContext, createContext} from "react";
+
+import {parseCurrency} from "~/currency/utils";
+
+import {Button} from "@/components/ui/button";
+
+import {getCartMessage, getCartTotal} from "../utils";
 import CartDrawer from "../components/CartDrawer";
 
 interface Context {
@@ -84,16 +87,16 @@ function CartProviderClient({
   );
 
   const state = useMemo(
-    () => ({ checkout, cart, total, quantity, message }),
+    () => ({checkout, cart, total, quantity, message}),
     [checkout, cart, total, quantity, message],
   );
   const actions = useMemo(
-    () => ({ updateItem, updateField, addItem, removeItem }),
+    () => ({updateItem, updateField, addItem, removeItem}),
     [updateItem, updateField, addItem, removeItem],
   );
 
   return (
-    <CartContext.Provider value={{ state, actions }}>
+    <CartContext.Provider value={{state, actions}}>
       <>
         {children}
         {/* Cart button */}
@@ -137,7 +140,7 @@ function CartProviderClient({
 }
 
 export function useCart(): [Context["state"], Context["actions"]] {
-  const { state, actions } = useContext(CartContext);
+  const {state, actions} = useContext(CartContext);
 
   return [state, actions];
 }

@@ -23,6 +23,7 @@ export async function generateMetadata({
   };
 }
 
+// eslint-disable-next-line react/function-component-definition
 const ProductPage = async ({params: {product}}: {params: {product: string}}) => {
   const data = await api.fetch(product);
 

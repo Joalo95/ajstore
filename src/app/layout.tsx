@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type {Metadata} from "next";
 
 import api from "~/store/api";
 import CartProvider from "~/cart/context";
@@ -6,7 +6,6 @@ import ThemeProvider from "~/theme/context";
 import ThemeToggle from "~/theme/components/ThemeToggle";
 
 import Hero from "@/components/ui/hero";
-
 import FacebookIcon from "@/components/icons/facebook";
 import WhatsappIcon from "@/components/icons/whatsapp";
 
@@ -21,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-async function RootLayout({ children }: { children: React.ReactNode }) {
+async function RootLayout({children}: {children: React.ReactNode}) {
   const store = await api.fetch();
 
   return (
@@ -37,7 +36,7 @@ async function RootLayout({ children }: { children: React.ReactNode }) {
                 <div className="mt-4 rounded-full p-1 sm:mt-1">
                   <img
                     alt={store.title}
-                    className="h-32 w-32 min-w-[128px] object-cover rounded-full border-8 border-background"
+                    className="h-32 w-32 min-w-[128px] rounded-full border-8 border-background object-cover"
                     src="./assets/avatar.jpg"
                   />
                 </div>

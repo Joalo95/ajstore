@@ -4,6 +4,7 @@ import cartApi from "../api";
 
 import CartProviderClient from "./client";
 
+// eslint-disable-next-line react/function-component-definition
 const CartProvider = async ({children}: {children: React.ReactNode}) => {
   const fields = await cartApi.list();
   const store = await storeApi.fetch();

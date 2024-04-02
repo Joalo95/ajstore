@@ -1,14 +1,14 @@
-export default function FacebookIcon({ size = 26 }: { size?: number }) {
+export default function FacebookIcon({size = 26}: {size?: number}) {
   return (
     <svg
-      width={size}
-      height={size}
-      viewBox="0 0 25 24"
-      strokeWidth="1"
-      stroke="currentColor"
       fill="currentColor"
+      height={size}
+      stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
+      strokeWidth="1"
+      viewBox="0 0 25 24"
+      width={size}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />

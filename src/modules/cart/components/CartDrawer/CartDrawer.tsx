@@ -1,9 +1,9 @@
-import type { Store } from "~/store/types";
+import type {Store} from "~/store/types";
 
-import type { CartItem, Field } from "../../types";
+import type {CartItem, Field} from "../../types";
 
-import { useEffect, useState } from "react";
-import { X } from "lucide-react";
+import {useEffect, useState} from "react";
+import {X} from "lucide-react";
 
 import {
   Sheet,
@@ -13,12 +13,13 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
+import {Button} from "@/components/ui/button";
 import WhatsappIcon from "@/components/icons/whatsapp";
+import PaymentPage from "@/app/payment/page";
+import {useCart} from "@/modules/cart/context/client";
+
 import Details from "./Details";
 import Fields from "./Fields";
-import { useCart } from "@/modules/cart/context/client";
-import PaymentPage from "@/app/payment/page";
 
 function CartDrawer({
   onClose,
@@ -30,7 +31,7 @@ function CartDrawer({
   store: Store;
   onClose: VoidFunction;
 }) {
-  const [{ total, message, cart, checkout }, { removeItem, updateItem, updateField }] = useCart();
+  const [{total, message, cart, checkout}, {removeItem, updateItem, updateField}] = useCart();
   const [currentStep, setCurrentStep] = useState<"details" | "fields">("details");
 
   function handleUpdateCart(id: number, item: CartItem) {

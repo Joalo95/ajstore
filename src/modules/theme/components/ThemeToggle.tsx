@@ -1,14 +1,13 @@
 "use client";
 
-import { useTheme } from "next-themes";
+import {useTheme} from "next-themes";
 
-//import { Button } from "@/components/ui/button";
 import SunFilledIcon from "@/components/icons/sunFilledIcon";
 import MoonFilledIcon from "@/components/icons/moonFilledIcon";
-import { Toggle } from "@/components/ui/toggle";
+import {Toggle} from "@/components/ui/toggle";
 
 export default function ThemeToggle() {
-  const { setTheme, theme } = useTheme();
+  const {setTheme, theme} = useTheme();
 
   return (
     <Toggle
