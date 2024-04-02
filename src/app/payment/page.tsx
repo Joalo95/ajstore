@@ -12,7 +12,7 @@ export default function PaymentPage() {
 
   async function payOrder() {
     try {
-      const res = await fetch("/payment/api", {
+      const res = await fetch("https://ajstore.vercel.app/payment/api", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
