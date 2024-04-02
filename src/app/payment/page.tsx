@@ -10,7 +10,7 @@ export function CartButtonPay() {
 
     async function payOrder() {
         try {
-            const res = await fetch('/payment', {
+            const res = await fetch('/payment/api', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
