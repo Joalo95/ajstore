@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useCart } from "@/modules/cart/context/client";
 import { CartItem } from "@/modules/cart/types";
 
-export function CartButtonPay() {
+export function Page() {
     const [{ cart }] = useCart();
 
     const items: CartItem[] = Array.from(cart.values());

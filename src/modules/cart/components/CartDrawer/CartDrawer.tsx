@@ -18,7 +18,7 @@ import WhatsappIcon from "@/components/icons/whatsapp";
 import Details from "./Details";
 import Fields from "./Fields";
 import { useCart } from "@/modules/cart/context/client";
-import { CartButtonPay } from "@/app/payment/page";
+import { Page } from "@/app/payment/page";
 
 function CartDrawer({
   onClose,
@@ -93,7 +93,7 @@ function CartDrawer({
           {(currentStep === "fields" || !fields) && (
             <div className="flex w-full flex-col gap-4">
               {/* TODO: Me fijo si el option selecciondo es Tarjeta y muestro el boton de mercadopago */}
-              <CartButtonPay />
+              <Page />
               <hr />
               <Button
                 className="w-full"
