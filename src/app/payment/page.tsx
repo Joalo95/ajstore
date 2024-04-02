@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import type {CartItem} from "@/modules/cart/types";
 
 import MercadPagoIcon from "@/components/icons/mercadoPago";
@@ -30,7 +29,13 @@ export default function PaymentPage() {
 
   return (
     <div className="flex">
-      <Button className="w-full" size="lg" onClick={payOrder}>
+      <Button
+        className="w-full"
+        size="lg"
+        onClick={() => {
+          void payOrder();
+        }}
+      >
         <div className="inline-flex items-center gap-2">
           <MercadPagoIcon />
           <span>Pagar</span>
