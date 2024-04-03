@@ -1,3 +1,5 @@
+"use client";
+
 import type {CartItem} from "@/modules/cart/types";
 
 import MercadPagoIcon from "@/components/icons/mercadoPago";
@@ -8,7 +10,7 @@ interface ServerResponse {
   url: string;
 }
 
-export default function PaymentPage() {
+export default function PaymentButton() {
   const [{cart}] = useCart();
 
   const items: CartItem[] = Array.from(cart.values());

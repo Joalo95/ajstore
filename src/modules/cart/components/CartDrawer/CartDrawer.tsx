@@ -15,8 +15,8 @@ import {
 } from "@/components/ui/sheet";
 import {Button} from "@/components/ui/button";
 import WhatsappIcon from "@/components/icons/whatsapp";
-import PaymentPage from "@/app/payment/page";
 import {useCart} from "@/modules/cart/context/client";
+import PaymentButton from "@/components/ui/pay-button";
 
 import Details from "./Details";
 import Fields from "./Fields";
@@ -94,7 +94,7 @@ function CartDrawer({
           {(currentStep === "fields" || !fields) && (
             <div className="flex w-full flex-col gap-4">
               {/* TODO: Me fijo si el option selecciondo es Tarjeta y muestro el boton de mercadopago */}
-              <PaymentPage />
+              <PaymentButton />
               <hr />
               <Button
                 className="w-full"
