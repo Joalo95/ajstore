@@ -5,6 +5,11 @@ import type {ComponentProps} from "react";
 
 import {useState, useMemo} from "react";
 import {X} from "lucide-react";
+import {
+  RadioGroup as RadioGroupPrimitive,
+  RadioGroupItem as RadioGroupPrimitiveItem,
+  RadioGroupIndicator as RadioGroupPrimitiveIndicator,
+} from "@radix-ui/react-radio-group";
 
 import {parseCurrency} from "~/currency/utils";
 
@@ -83,37 +88,79 @@ function CartItemDrawer({
                 {options.map((category) => {
                   return (
                     <div key={category.title} className="flex w-full flex-col gap-4">
-                      <p className="text-lg font-medium">{category.title}</p>
-                      <RadioGroup value={formData.options?.[category.title]?.[0]?.title}>
-                        <div className="flex flex-col gap-4">
-                          {category.options.map((option) => (
-                            <div key={option.title} className="flex items-center gap-x-3">
-                              <RadioGroupItem
-                                id={option.title}
-                                value={option.title}
-                                onClick={() => {
-                                  handleSelectOption(option);
-                                }}
-                              />
-                              <Label className="w-full" htmlFor={option.title}>
-                                <div className="flex w-full items-center justify-between gap-2">
-                                  <p>{option.title}</p>
-                                  {Boolean(option.price) && (
-                                    <div className="flex items-center gap-1">
-                                      <p className="text-muted-foreground">
-                                        {option.price < 0 ? "-" : "+"}
-                                      </p>
-                                      <p className="font-medium">
-                                        {parseCurrency(Math.abs(option.price))}
-                                      </p>
-                                    </div>
-                                  )}
-                                </div>
-                              </Label>
-                            </div>
-                          ))}
-                        </div>
-                      </RadioGroup>
+                      <p>{category.title}</p>
+                      {category.title === "color" ? (
+                        <RadioGroupPrimitive>
+                          <div className="flex gap-4">
+                            {category.options.map((option) => (
+                              <div key={option.title}>
+                                <RadioGroupPrimitiveItem
+                                  className="size-8 rounded-full border-accent aria-checked:border-4 aria-checked:border-accent"
+                                  id={option.title}
+                                  style={{backgroundColor: option.title}}
+                                  value={option.title}
+                                  onClick={() => handleSelectOption(option)}
+                                >
+                                  <RadioGroupPrimitiveIndicator className="hidden" />
+                                </RadioGroupPrimitiveItem>
+                                <Label className="w-full" htmlFor={option.title} />
+                              </div>
+                            ))}
+                          </div>
+                        </RadioGroupPrimitive>
+                      ) : category.title === "talle" ? (
+                        <RadioGroupPrimitive>
+                          <div className=" relative flex h-6 w-max gap-1 rounded-xl border-[0.5px] border-accent text-primary">
+                            {category.options.map((option) => (
+                              <div
+                                key={option.title}
+                                className="-mt-[0.25rem] flex size-8 items-center justify-center"
+                              >
+                                <RadioGroupPrimitiveItem
+                                  className="absolute flex items-center justify-center size-8 rounded-full border-none aria-checked:bg-accent"
+                                  id={option.title}
+                                  value={option.title}
+                                  onClick={() => handleSelectOption(option)}
+                                >
+                                  <RadioGroupPrimitiveIndicator className="hidden" />
+                                  <Label className="mt-[0.5rem] size-8 rounded-full text-sm">
+                                    {option.title}
+                                  </Label>
+                                </RadioGroupPrimitiveItem>
+                              </div>
+                            ))}
+                          </div>
+                        </RadioGroupPrimitive>
+                      ) : (
+                        <RadioGroup>
+                          <div className="flex flex-col gap-4">
+                            {category.options.map((option) => (
+                              <div key={option.title} className="flex items-center gap-x-3">
+                                <RadioGroupItem
+                                  id={option.title}
+                                  value={option.title}
+                                  onClick={() => handleSelectOption(option)}
+                                />
+                                <Label className="w-full" htmlFor={option.title}>
+                                  <div className="flex w-full items-center justify-between gap-2">
+                                    <p>{option.title}</p>
+                                    {Boolean(option.price) && (
+                                      <div className="flex items-center gap-1">
+                                        <p className="text-muted-foreground">
+                                          {option.price < 0 ? "-" : "+"}
+                                        </p>
+                                        <p className="font-medium">
+                                          {parseCurrency(Math.abs(option.price))}
+                                        </p>
+                                      </div>
+                                    )}
+                                  </div>
+                                </Label>
+                              </div>
+                            ))}
+                          </div>
+                        </RadioGroup>
+                      )}
                     </div>
                   );
                 })}

@@ -8,6 +8,7 @@ import ThemeToggle from "~/theme/components/ThemeToggle";
 import Hero from "@/components/ui/hero";
 import FacebookIcon from "@/components/icons/facebook";
 import WhatsappIcon from "@/components/icons/whatsapp";
+import TiktokIcon from "@/components/icons/tiktok";
 
 import "./globals.css";
 
@@ -67,6 +68,18 @@ async function RootLayout({children}: {children: React.ReactNode}) {
                       >
                         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-600 text-white">
                           <WhatsappIcon />
+                        </div>
+                      </a>
+                    ) : null}
+                    {store.tiktok ? (
+                      <a
+                        aria-label="Toktok"
+                        href={store.tiktok}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-600 text-white">
+                          <TiktokIcon />
                         </div>
                       </a>
                     ) : null}

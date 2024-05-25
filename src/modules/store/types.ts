@@ -4,6 +4,7 @@ export interface Store {
   logo: string;
   banner: string;
   facebook: string;
+  tiktok: string;
   whatsapp: string;
   phone: string;
 }
