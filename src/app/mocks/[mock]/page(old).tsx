@@ -3,11 +3,12 @@ import StoreScreen from "~/store/screens/Store";
 
 // eslint-disable-next-line react/function-component-definition
 const IndexMockPage = async ({
-  params,
+  params: {mock},
 }: {
-  params: Promise<{mock: string}>;
+  params: {
+    mock: string;
+  };
 }) => {
-  const {mock} = await params;
   const products = await api.mock.list(mock);
 
   return <StoreScreen products={products} />;

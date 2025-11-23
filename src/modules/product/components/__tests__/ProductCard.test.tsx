@@ -14,27 +14,27 @@ const product: Product = {
   description: "description",
 };
 
-test("deberia mostrar el titulo, precio y boton", () => {
+test("deberia mostrar el titulo, precio y producto clickeable", () => {
   render(<ProductCard product={product} onAdd={jest.fn()} />);
 
   const priceRegex = new RegExp(String(product.price), "i");
 
   expect(screen.getByText(product.title)).toBeInTheDocument();
   expect(screen.getByText(priceRegex)).toBeInTheDocument();
-  expect(screen.getByText("Agregar")).toBeInTheDocument();
+  expect(screen.getByTestId("product")).toBeInTheDocument();
 });
 
-test("deberia ejecutar onAdd cuando clickeo en agregar y no tengo opciones", () => {
+test("deberia abrir el drawer cuando clickeo en el producto y no tengo opciones", () => {
   const onAdd = jest.fn();
 
   render(<ProductCard product={product} onAdd={onAdd} />);
 
-  fireEvent.click(screen.getByText("Agregar"));
+  fireEvent.click(screen.getByTestId("product"));
 
-  expect(onAdd).toHaveBeenCalled();
+  expect(screen.getByTestId("cart-item-drawer")).toBeInTheDocument();
 });
 
-test("deberia ejecutar onAdd cuando clickeo en agregar y tengo opciones", () => {
+test("deberia abrir el drawer cuando clickeo en el producto y tengo opciones", () => {
   const onAdd = jest.fn();
 
   render(
@@ -58,7 +58,7 @@ test("deberia ejecutar onAdd cuando clickeo en agregar y tengo opciones", () => 
     />,
   );
 
-  fireEvent.click(screen.getByText("Agregar"));
+  fireEvent.click(screen.getByTestId("product"));
 
   expect(screen.getByTestId("cart-item-drawer")).toBeInTheDocument();
 });

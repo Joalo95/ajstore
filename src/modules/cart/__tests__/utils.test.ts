@@ -121,8 +121,8 @@ describe("getCartTotal", () => {
   it("debería devolver el precio correcto cuando hay más de una unidad", () => {
     const cart = new Map<number, CartItem>();
 
-    cart.set(Date.now(), item);
-    cart.set(Date.now(), item);
+    cart.set(1, item);
+    cart.set(2, item);
 
     const actual = getCartTotal(cart);
     const expected = 200;
@@ -188,9 +188,8 @@ describe("getCartMessage", () => {
     checkout.set("Forma de pago", "Efectivo");
 
     const actual: string = getCartMessage(cart, checkout);
-    const expected = `* title - $\u00a0100,00
+    const expected = `* title - $\u00a0100,00\r\n* Forma de pago: Efectivo\r\n\r\n\r\nTotal: $\u00a0100,00`;
 
-Total: $\u00a0100,00`;
 
     expect(actual).toEqual(expected);
   });
@@ -228,9 +227,8 @@ Total: $\u00a0100,00`;
     checkout.set("Forma de pago", "Efectivo");
 
     const actual: string = getCartMessage(cart, checkout);
-    const expected = `* title [Peso: Medio kilo, Calidad: Alta] - $\u00a0200,00
+    const expected = `* title [Peso: Medio kilo, Calidad: Alta] - $\u00a0200,00\r\n* Forma de pago: Efectivo\r\n\r\n\r\nTotal: $\u00a0200,00`;
 
-Total: $\u00a0200,00`;
 
     expect(actual).toEqual(expected);
   });

@@ -33,11 +33,11 @@ export function getCartMessage(cart: Cart, checkout: Checkout): string {
             : ``
         } - ${parseCurrency(getCartItemPrice(item))}`,
     )
-    .join("\n");
+    .join("\r\n");
   const fields = Array.from(checkout.entries())
     .map(([key, value]) => `* ${key}: ${value}`)
-    .join("\n");
+    .join("\r\n");
   const total = `Total: ${parseCurrency(getCartTotal(cart))}`;
 
-  return [items, fields, total].join("\n\n");
+  return `${items}\r\n${fields}\r\n\r\n\r\n${total}`;
 }

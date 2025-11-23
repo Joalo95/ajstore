@@ -11,11 +11,10 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({
-  params,
+  params: {product: productId},
 }: {
-  params: Promise<{product: string}>;
+  params: {product: string};
 }): Promise<Metadata> {
-  const {product: productId} = await params;
   const product = await api.fetch(productId);
 
   return {
@@ -25,8 +24,7 @@ export async function generateMetadata({
 }
 
 // eslint-disable-next-line react/function-component-definition
-const ProductPage = async ({params}: {params: Promise<{product: string}>}) => {
-  const {product} = await params;
+const ProductPage = async ({params: {product}}: {params: {product: string}}) => {
   const data = await api.fetch(product);
 
   return <ProductPageClient product={data} />;

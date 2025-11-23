@@ -16,13 +16,13 @@ interface RawUnknown extends IProduct {
 }
 
 class Product implements IProduct {
-  id: IProduct["id"];
-  title: IProduct["title"];
-  category: IProduct["category"];
-  description: IProduct["description"];
-  image: IProduct["image"];
+  id!: IProduct["id"];
+  title!: IProduct["title"];
+  category!: IProduct["category"];
+  description!: IProduct["description"];
+  image!: IProduct["image"];
   options: IProduct["options"];
-  price: IProduct["price"];
+  price!: IProduct["price"];
 
   constructor() {
     this.options = {} as Product["options"];
